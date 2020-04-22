@@ -1,0 +1,68 @@
+[System]
+Name='sugeno'
+Type='sugeno'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=22
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='cough'
+Range=[0 1]
+NumMFs=3
+MF1='None':'trapmf',[-0.375 -0.04167 0.04167 0.375]
+MF2='mild':'trapmf',[0.125 0.4583 0.5417 0.875]
+MF3='persistent':'trapmf',[0.625 0.9583 1.042 1.375]
+
+[Input2]
+Name='fever'
+Range=[0 1]
+NumMFs=3
+MF1='none':'trapmf',[-0.375 -0.04167 0.04167 0.375]
+MF2='mild':'trapmf',[0.125 0.4583 0.5417 0.875]
+MF3='high':'trapmf',[0.625 0.9583 1.042 1.375]
+
+[Input3]
+Name='Breathing_Problem'
+Range=[0 1]
+NumMFs=3
+MF1='None':'trapmf',[-0.375 -0.04167 0.04167 0.375]
+MF2='occasionally':'trapmf',[0.125 0.4583 0.5417 0.875]
+MF3='Persistent':'trapmf',[0.625 0.9583 1.042 1.375]
+
+[Output1]
+Name='Risk'
+Range=[0 1]
+NumMFs=3
+MF1='low':'constant',[0]
+MF2='medium':'constant',[0.5]
+MF3='high':'constant',[1]
+
+[Rules]
+1 1 1, 1 (1) : 1
+2 1 1, 1 (1) : 1
+1 2 1, 1 (1) : 1
+1 3 1, 1 (1) : 1
+1 3 1, 2 (1) : 1
+1 3 2, 2 (1) : 1
+1 3 3, 3 (1) : 1
+1 2 2, 2 (1) : 1
+1 2 3, 3 (1) : 1
+2 1 2, 2 (1) : 1
+2 1 3, 3 (1) : 1
+2 2 2, 3 (1) : 1
+2 2 3, 3 (1) : 1
+2 3 2, 3 (1) : 1
+2 3 3, 3 (1) : 1
+3 1 1, 1 (1) : 1
+3 2 1, 2 (1) : 1
+3 1 2, 3 (1) : 1
+3 1 3, 3 (1) : 1
+3 2 3, 3 (1) : 1
+3 3 3, 3 (1) : 1
+3 2 2, 3 (1) : 1
